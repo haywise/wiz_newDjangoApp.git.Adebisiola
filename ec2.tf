@@ -47,7 +47,11 @@ resource "aws_instance" "example_instance" {
   ami           = "ami-0c7217cdde317cfec"  # Replace with your desired AMI ID
   instance_type = "t2.micro"               # Change to your desired instance type
   security_groups = [aws_security_group.example_sg.name]
-  
+  key_name        = "public-kp"
+
+  tags = {
+    Name = "mongodb_server"
+  }
 }
 
 # Output the public IP address of the Ubuntu instance
