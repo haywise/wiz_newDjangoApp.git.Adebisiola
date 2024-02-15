@@ -7,18 +7,16 @@ provider "aws" {
 
 
 # Create a VPC
-
 resource "aws_default_vpc" "default" {
   tags = {
     Name = "Default VPC"
   }
 }
 
-# Security Group
 resource "aws_security_group" "allow_web" {
   name        = "allow_web"
   description = "Allow webserver inbound traffic"
-  vpc_id      = aws_default_vpc.default
+  vpc_id      = aws_default_vpc.default.id  # Added .id
 
   ingress {
     description = "Web Traffic from VPC"
@@ -26,7 +24,6 @@ resource "aws_security_group" "allow_web" {
     to_port     = 443
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
-
   }
 
   ingress {
@@ -35,7 +32,6 @@ resource "aws_security_group" "allow_web" {
     to_port     = 22
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
-
   }
 
   ingress {
@@ -44,16 +40,16 @@ resource "aws_security_group" "allow_web" {
     to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
-
   }
+
   ingress {
     description = "HTTP"
     from_port   = 8080
     to_port     = 8080
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
-
   }
+
   egress {
     from_port        = 0
     to_port          = 0
