@@ -95,14 +95,6 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"]
 }
 
-resource "aws_s3_bucket" "wiz" {
-  bucket = "bisi-mongodb-backup"
-
-  tags = {
-    Name    = "mongodb-backup"
-  }
-}
-
 # print the url of the jenkins server
 output "Jenkins_website_url" {
   value     = join ("", ["http://", aws_instance.firstinstance.public_ip, ":", "8080"])
