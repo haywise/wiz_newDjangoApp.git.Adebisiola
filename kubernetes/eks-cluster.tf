@@ -33,11 +33,11 @@ module "eks" {
   eks_managed_node_groups = {
     dev = {
       min_size     = 1
-      max_size     = 3
-      desired_size = 3
+      max_size     = 2
+      desired_size = 2
 
       instance_types = ["t2.small"]
-      key_name       = "devopskeypair"
+      key_name       = "public-kp"
     }
   }
 }
