@@ -70,7 +70,7 @@ resource "aws_instance" "firstinstance" {
   subnet_id              = aws_subnet.prodsubnet1.id
   key_name               = "public-kp"
   availability_zone      = "us-east-1a"
-  user_data              =  "${file("install_jenkins.sh")}"
+  user_data              =  "${file("install.jenkins.sh")}"
 
 
   tags = {
