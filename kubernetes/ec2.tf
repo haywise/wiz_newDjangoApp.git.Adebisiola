@@ -2,12 +2,12 @@
 provider "aws" {
   alias = "second"
   region = "us-east-1"  # Change to your desired region
-  profile = "Bisi"
+  profile = "Abdulhakeem"
 }
 
 # Create an S3 bucket
 resource "aws_s3_bucket" "example_bucket" {
-  bucket = "bisi-mongodb-${random_id.example_bucket_suffix.hex}"
+  bucket = "atrihomes-mongodb-${random_id.example_bucket_suffix.hex}"
 }
 
 # Create a random ID for the bucket suffix
@@ -47,7 +47,7 @@ resource "aws_instance" "example_instance" {
   ami           = "ami-0c7217cdde317cfec"  # Replace with your desired AMI ID
   instance_type = "t2.micro"               # Change to your desired instance type
   security_groups = [aws_security_group.example_sg.name]
-  key_name        = "public-kp"
+  key_name        = "kim"
 
   tags = {
     Name = "mongodb_server"
